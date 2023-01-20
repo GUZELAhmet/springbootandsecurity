@@ -8,7 +8,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -38,7 +37,7 @@ public class User {
     joinColumns = @JoinColumn(name="user_id"),
     inverseJoinColumns = @JoinColumn(name="role_id"))
     @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Role> role=new HashSet<>();
+    private Set<Role> roles =new HashSet<>();
 
     @JsonIgnore
     @OneToOne(mappedBy = "user")

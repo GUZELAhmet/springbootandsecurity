@@ -32,7 +32,7 @@ public class UserDetailServiceImp implements UserDetailsService // bu class ta a
                   core.
                   userdetails.User(user.getUserName(),
                   user.getPassword(),
-                  buildGrantedAuthorities(user.getRole()));
+                  buildGrantedAuthorities(user.getRoles()));
       } else { throw new ResourceNotFoundException("user not found username : " + username); }
 
     }
@@ -44,6 +44,7 @@ public class UserDetailServiceImp implements UserDetailsService // bu class ta a
         }
         return authorities;
     }
+
 
 
 }

@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -25,7 +25,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().
                 authorizeHttpRequests().
-                antMatchers("/","index.hmtl","/css/*","/js/*").permitAll().
+                antMatchers("/","index.hmtl","/css/*","/js/*","/register").permitAll().
+               and().authorizeRequests().antMatchers("/students/**").hasRole("ADMIN"). // admin olanlara tüm student clasına izin verdi class seviyesinde  izin verdi
                 anyRequest().authenticated().and().httpBasic();
     }
 
